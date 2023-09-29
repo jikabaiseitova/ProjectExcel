@@ -61,9 +61,4 @@ class ExcelPropertyGenerator:
 
 
 
-if __name__ == "__main__":
-    excel_file_path = "Excel.xlsx"
-    data = get_data()
 
-    excel_generator = ExcelPropertyGenerator(excel_file_path)
-    excel_generator.generate_report(data)
