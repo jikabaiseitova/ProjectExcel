@@ -1,8 +1,4 @@
 from django.db import models
-from openpyxl import Workbook
-from openpyxl import load_workbook
-
-from my_project.write_excel import get_data
 
 
 class Customer(models.Model):
@@ -78,25 +74,5 @@ class CustomerLegalEntity(Customer):
     )
 
 
-class ExcelPropertyGenerator:
-    def __init__(self, file_path: str):
-        self.file_path = file_path
-        self.workbook = None
-        self.ws = None
 
-    def load_workbook(self):
-        self.workbook = load_workbook(self.file_path)
-        self.ws = self.workbook.active
 
-    def save_workbook(self):
-        self.workbook.save(self.file_path)
-        return self.file_path
-
-    def generate_report(self):
-        self.load_workbook()
-        data = get_data()
-
-        for row_data in data:
-            self.ws.append(row_data)
-
-        self.save_workbook()
